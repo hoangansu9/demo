@@ -1,0 +1,124 @@
+﻿@model doan_1.Models.Book
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="detail_book_wrapper">   
+    <div class="row">
+        <div class="col-lg-4 col-md-3">
+            <img class="img_book" src="@Url.Content(Model.Image)"  />
+        </div>
+        <div class="col-lg-8 col-md-9">
+            <div class="row">
+                <h1>@Html.DisplayFor(model => model.BookName)</h1>
+            </div>
+            <div class="row">
+                <div><b>Tác giả:</b>  @Html.DisplayFor(model => model.Author.AuthorName)</div>
+                <br />
+                <div class="price_book">@Model.BookPrice.ToString("N0") &dstrok;</div>
+
+            </div>
+            <br />
+            <div class="row">
+               
+                    <input type="number" class="input-group-addon input_number " id="txt_val_quantity" value="1" name="Quantity" />
+                   <a target="_parent" href="/ShoppingCart/AddtoCart_Detail/@Html.DisplayFor(model => model.BookID)" 
+                      style="outline:none;text-decoration:none; color:white;" 
+                      class="btn btn-danger">
+                          MUA NGAY
+                   </a>
+                
+
+            </div>
+            <div class="row">
+                <div style="margin-top:40px;">Mô tả chi tiết:</div>
+                @Html.DisplayFor(model => model.BookDescription)
+
+            </div>
+        </div>
+    </div>
+    @*<dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Author.AuthorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author.AuthorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.CateName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.CateName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Provider.ProviderName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Provider.ProviderName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Publisher.PublisherName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Publisher.PublisherName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublisherDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublisherDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+    </dl>*@
+</div>
+<p>
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.BookID })
+    }
+    
+    @Html.ActionLink("> Về trang chủ", "Index")
+</p>
